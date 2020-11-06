@@ -18,8 +18,11 @@ public:
 	
 	Player();
 	Player(Point _position);
-	void Move(int x, int y);
-	
+	void SetPosition(int x, int y);
+	void SetPosition(Point _position);
+	void MoveTo(int x, int y);
+	void MoveTo(Point _position);
+	inline void Wait() { waitNumber++; }
 	inline Point GetPosition() const { return position; }
 	inline int GetStepNumber() const { return stepCounter; }
 	inline int GetWaitNumber() const { return waitNumber; }

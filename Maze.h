@@ -51,7 +51,7 @@ public:
 	virtual void GenerteMaze();
 	int SetHeight(int _height);
 	int SetWidth(int _width);
-	int SetExitNumber(int _exitNumber);
+	virtual int SetExitNumber(int _exitNumber);
 	void Reset();
 	void Print() const;
 
