@@ -7,7 +7,7 @@ void MazeGame::MovePlayer(int playerID)
 	int nextPoint = 0;
 	maze[player[playerID].GetPosition().y * width + player[playerID].GetPosition().x] = ' ';
 
-	while (path->at(nextPoint).x != Exit[playerID].x && path->at(nextPoint).y != Exit[playerID].y)
+	while (path->at(nextPoint).x != Exit[playerID].x || path->at(nextPoint).y != Exit[playerID].y)
 		nextPoint++;
 
 	int stepWalked = player[playerID].GetStepNumber();
@@ -34,6 +34,7 @@ MazeGame::~MazeGame()
 void MazeGame::Round()
 {
 	MovePlayer(0);
+	MovePlayer(1);
 }
 
 void MazeGame::GenerteMaze()
