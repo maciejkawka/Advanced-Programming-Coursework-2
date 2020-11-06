@@ -1,5 +1,7 @@
 #include "Maze.h"
 
+
+
 int Maze::GetRandomInt(int floor, int ceiling)
 {	
 	return (rand() % (ceiling-floor+1)) + floor;
@@ -409,11 +411,4 @@ void Maze::SaveMaze(std::string filePath) const
 	file.close();
 }
 
-inline Point Maze::GetExit(int _exit) const
-{
-	if (_exit > exitNumber - 1)
-		return { 0,0 };
 
-	return Exit[_exit];
-
-}

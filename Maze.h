@@ -8,15 +8,22 @@
 #include <fstream>
 #include<string>
 
-struct Point {
 
+#ifndef POINT_STR
+#define POINT_STR
+
+struct Point {
 	int x;
 	int y;
 };
 
+#endif
+
+
+
 class Maze {
 
-private:
+protected:
 
 	int height;
 	int width;
@@ -34,24 +41,23 @@ private:
 	void CenterSquereGenerator();
 
 
+	
+
 
 public:
 	Maze();
 	Maze(int _height, int _width, int _extiNumber);
 	~Maze();
-	void GenerteMaze();
+	virtual void GenerteMaze();
 	int SetHeight(int _height);
 	int SetWidth(int _width);
 	int SetExitNumber(int _exitNumber);
 	void Reset();
 	void Print() const;
 
-	void LoadMaze(std::string filePath);
-	void SaveMaze(std::string filePath) const;
-	
-	inline int GetHeight() const { return height; } //Not used
-	inline int GetWidht() const { return width; } //Not used
-	inline int GetExitNumer() const { return exitNumber; }//Not used
-	inline std::vector<Point>* GetPath() const { return path; }
-	inline Point GetExit(int _exit) const;
+	virtual void LoadMaze(std::string filePath);
+	virtual void SaveMaze(std::string filePath) const;
+
+
+
 };
