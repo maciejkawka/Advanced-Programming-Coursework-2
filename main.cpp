@@ -5,7 +5,7 @@ int main()
 	srand(time(NULL));
 
 
-	MazeGame game(11, 11, 2);
+	MazeGame game(21, 21, 4);
 	game.GenerteMaze();
 	game.GeneratePlayers();
 	game.Print();

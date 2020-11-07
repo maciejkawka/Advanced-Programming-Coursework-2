@@ -12,7 +12,18 @@ void MazeGame::MovePlayer(int playerID)
 
 	int stepWalked = player[playerID].GetStepNumber();
 	int nextPathIndex = nextPoint + 2 + stepWalked;
-	if(nextPathIndex==)
+	
+	if (nextPathIndex == path->size())
+
+	{
+		player[playerID].Disactivate();
+		return;
+	}
+	if (path->at(nextPathIndex).x == Exit[playerID + 1].x && path->at(nextPathIndex).y == Exit[playerID + 1].y)
+	{
+		player[playerID].Disactivate();
+		return;
+	}
 	
 	if (IsAnyPlayerAt(nextPathIndex))
 		player[playerID].Wait();

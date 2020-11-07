@@ -22,7 +22,7 @@ public:
 
 	void SetPosition(int x, int y);
 	void SetPosition(Point _position);
-	void Disactivate() { isActivate == false; }
+	void Disactivate() { isActivate = false; }
 	void MoveTo(int x, int y);
 	void MoveTo(Point _position);
 
