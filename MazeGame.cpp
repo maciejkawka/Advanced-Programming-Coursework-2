@@ -52,24 +52,29 @@ int MazeGame::Round()
 {
 	if (maze == nullptr)
 		return -2;
-	int GameOver=0;
+	int GameOver = 0;
+	int block = 0, finish = 0;
 	for (int i = 0; i < exitNumber; i++)
 	{
 		if (player[i].IsBlocked())
 		{
-			GameOver++;
+			block++;
 			continue;
 		}
 		if (!player[i].GetState())
 		{
-			GameOver++;
+			finish++;
 			continue;
 		}
 		MovePlayer(i);
 	}
 
-	if (GameOver == exitNumber)
+	if (block == exitNumber)
 		return -1;
+	else if (finish == exitNumber)
+		return -2;
+	else if ((finish + block) == exitNumber)
+		return -3;
 	
 	return 0;	
 }
@@ -140,6 +145,12 @@ int MazeGame::SetExitNumber(int _exitNumber)
 
 	exitNumber = _exitNumber;
 	return 0;
+}
+
+void MazeGame::Reset()
+{
+	Maze::Reset();
+	delete[] player;
 }
 
 void MazeGame::GeneratePlayers()

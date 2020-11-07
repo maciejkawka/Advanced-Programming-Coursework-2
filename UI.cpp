@@ -26,8 +26,59 @@ void UI::Print()
 
 void UI::Analyse()
 {
-	std::cout << "Not Implemented";
+	system("CLS");
+
+	std::cout << "Enter maximum height: ";
+	int inputHeight = InputInt();
+	std::cout << "Enter maximum width: ";
+	int inputWidth = InputInt();
+	std::cout << "Enter maximum players: ";
+	int inputPlayers = InputInt();
+
+	struct Data {
+		int steps;
+		int waits;
+	};
+
+	std::vector<int> steps, waitings, rounds;
+	
+	for (int i = 9; i <= inputHeight; i+=2)
+	{
+		for (int j = 9; j <= inputWidth; j+=2)
+		{			
+			for (int k = 1; k <= inputPlayers; k++)
+			{
+								
+				for (int l = 0; l < 100; l++)
+				{
+					
+					mainMaze->SetHeight(i);
+					mainMaze->SetWidth(j);
+					mainMaze->SetExitNumber(k);
+					mainMaze->GenerteMaze();
+					mainMaze->GeneratePlayers();
+					while (!(mainMaze->Round()));
+					for (int m = 0; m < k; m++)
+					{
+						steps.push_back(mainMaze->GetPlayerSteps(m));
+						waitings.push_back(mainMaze->GetPlayerWaitings(m));
+						rounds.push_back(mainMaze->GetPlayerRounds(m));
+					}
+					mainMaze->Reset();
+				}
+			}
+		}
+	}
+
+	
+
+
+
+
+	
+
 }
+
 
 void UI::NextRound()
 {
@@ -35,6 +86,19 @@ void UI::NextRound()
 	if (state == -1)
 	{	
 		std::cout << "GAME OVER!" << std::endl;
+		std::cout << "A maze is not solvable due to all players blocking each other" << std::endl;
+		system("pause");
+	}
+	else if (state == -2)
+	{
+		std::cout << "GAME OVER!" << std::endl;
+		std::cout << "A maze is fully solvable as all players can reach the finishing point" << std::endl;
+		system("pause");
+	}
+	else if (state == -3)
+	{
+		std::cout << "GAME OVER!" << std::endl;
+		std::cout << "A maze is partially solvable as some players can reach the finishing point" << std::endl;
 		system("pause");
 	}
 	else if (state == -2)
