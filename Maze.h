@@ -40,21 +40,17 @@ protected:
 	void PlaceExits();
 	void CenterSquereGenerator();
 
-
-	
-
-
 public:
 	Maze();
 	Maze(int _height, int _width, int _extiNumber);
 	~Maze();
+
 	virtual void GenerteMaze();
 	int SetHeight(int _height);
 	int SetWidth(int _width);
 	virtual int SetExitNumber(int _exitNumber);
 	virtual void Reset();
 	void Print() const;
-
 	virtual void LoadMaze(std::string filePath);
 	virtual void SaveMaze(std::string filePath) const;
 

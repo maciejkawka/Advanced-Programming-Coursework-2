@@ -12,7 +12,7 @@ class Player {
 private:
 
 	Point position;
-	int stepCounter, waitNumber, roundCounter;
+	int stepCounter, waitInRowCounter, roundCounter;
 	bool isActivate,blocked;
 
 public:
@@ -30,7 +30,6 @@ public:
 	inline void NextRound() { roundCounter++; }
 	inline Point GetPosition() const { return position; }
 	inline int GetStepNumber() const { return stepCounter; }
-	inline int GetWaitNumber() const { return waitNumber; }
 	inline bool GetState() const { return isActivate; }
 	inline int GetRoundNumber() const { return roundCounter; }
 	inline bool IsBlocked() const { return blocked; }

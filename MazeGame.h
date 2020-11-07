@@ -17,8 +17,8 @@ public:
 	MazeGame(): player(nullptr) {}
 	MazeGame(int _height, int _width, int _extiNumber): player(nullptr), Maze(_height, _width, _extiNumber) {}
 	~MazeGame();
-	int Round();
 	
+	int Round();
 	void GenerteMaze() override;
 	int SetExitNumber(int _exitNumber) override;
 	void GeneratePlayers();
