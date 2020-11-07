@@ -50,6 +50,8 @@ MazeGame::~MazeGame()
 
 int MazeGame::Round()
 {
+	if (maze == nullptr)
+		return -2;
 	int GameOver=0;
 	for (int i = 0; i < exitNumber; i++)
 	{
@@ -66,8 +68,9 @@ int MazeGame::Round()
 		MovePlayer(i);
 	}
 
-	if (GameOver == 4)
+	if (GameOver == exitNumber)
 		return -1;
+	
 	return 0;	
 }
 
@@ -104,7 +107,7 @@ void MazeGame::GenerteMaze()
 
 	RecursiveMazeGenerator({ 1,1 });
 	PlaceExits();
-	//CenterSquereGenerator();
+	CenterSquereGenerator();
 
 	maze[width * (height / 2) + (width / 2)] = 'S';
 
