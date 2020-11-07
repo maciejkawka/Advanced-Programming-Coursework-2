@@ -50,9 +50,8 @@ MazeGame::~MazeGame()
 
 int MazeGame::Round()
 {
-	if (maze == nullptr)
-		return -2;
-	int GameOver = 0;
+	if (maze == nullptr||player==nullptr)
+		return -4;
 	int block = 0, finish = 0;
 	for (int i = 0; i < exitNumber; i++)
 	{

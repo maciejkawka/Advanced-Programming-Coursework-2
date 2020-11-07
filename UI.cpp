@@ -101,9 +101,9 @@ void UI::NextRound()
 		std::cout << "A maze is partially solvable as some players can reach the finishing point" << std::endl;
 		system("pause");
 	}
-	else if (state == -2)
+	else if (state == -4)
 	{
-		std::cout << "Maze is not generated!!" << std::endl;
+		std::cout << "Maze is not generated properly!!" << std::endl;
 		system("pause");
 	}
 }
