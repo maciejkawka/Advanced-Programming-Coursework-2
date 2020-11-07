@@ -27,7 +27,8 @@ void UI::Print()
 
 void UI::Analyse()
 {
-	system("CLS");
+	return;
+	/*system("CLS");
 
 	std::cout << "Enter maximum height: ";
 	int inputHeight = InputInt();
@@ -39,47 +40,10 @@ void UI::Analyse()
 	struct Data {
 		int steps;
 		int waits;
-	};
+	};*/
 
-	std::vector<int> steps, waitings, rounds;
-	
-	for (int i = 9; i <= inputHeight; i+=2)
-	{
-		for (int j = 9; j <= inputWidth; j+=2)
-		{			
-			for (int k = 1; k <= inputPlayers; k++)
-			{
-								
-				for (int l = 0; l < 100; l++)
-				{
-					
-					mainMaze->SetHeight(i);
-					mainMaze->SetWidth(j);
-					mainMaze->SetExitNumber(k);
-					mainMaze->GenerteMaze();
-					mainMaze->GeneratePlayers();
-					while (!(mainMaze->Round()));
-					for (int m = 0; m < k; m++)
-					{
-						steps.push_back(mainMaze->GetPlayerSteps(m));
-						waitings.push_back(mainMaze->GetPlayerWaitings(m));
-						rounds.push_back(mainMaze->GetPlayerRounds(m));
-					}
-					mainMaze->Reset();
-				}
-			}
-		}
-	}
-
-	
-
-
-
-
-	
-
+	//TO BE IMPLEMENTED
 }
-
 
 void UI::NextRound()
 {
