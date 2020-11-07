@@ -9,7 +9,8 @@ class MazeGame : public Maze {
 private:
 	Player* player;
 	void MovePlayer(int playerID);
-	 
+	bool IsAnyPlayerAt(int positionIndex);
+
 
 public:
 	MazeGame(): player(nullptr) {}

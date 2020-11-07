@@ -2,6 +2,8 @@
 
 int main()
 {
+	srand(time(NULL));
+
 
 	MazeGame game(11, 11, 2);
 	game.GenerteMaze();

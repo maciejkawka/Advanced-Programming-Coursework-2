@@ -11,13 +11,12 @@ void MazeGame::MovePlayer(int playerID)
 		nextPoint++;
 
 	int stepWalked = player[playerID].GetStepNumber();
-	int nextPathIndex = nextPoint + 2 + stepWalked;
-	if(nextPathIndex==)
 	
-	if (IsAnyPlayerAt(nextPathIndex))
+	
+	if (IsAnyPlayerAt(nextPoint + 2 + stepWalked))
 		player[playerID].Wait();
 	else
-		player[playerID].MoveTo(path->at(nextPathIndex));
+		player[playerID].MoveTo(path->at(nextPoint + 2 + stepWalked));
 	
 
 
