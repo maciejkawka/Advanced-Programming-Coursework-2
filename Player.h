@@ -13,7 +13,7 @@ private:
 
 	Point position;
 	int stepCounter, waitNumber, roundCounter;
-	bool isActivate;
+	bool isActivate,blocked;
 
 public:
 	
@@ -25,12 +25,13 @@ public:
 	inline void Disactivate() { isActivate = false; }
 	void MoveTo(int x, int y);
 	void MoveTo(Point _position);
-	
+	void Wait();
+
 	inline void NextRound() { roundCounter++; }
-	inline void Wait() { waitNumber++; }
 	inline Point GetPosition() const { return position; }
 	inline int GetStepNumber() const { return stepCounter; }
 	inline int GetWaitNumber() const { return waitNumber; }
 	inline bool GetState() const { return isActivate; }
 	inline int GetRoundNumber() const { return roundCounter; }
+	inline bool IsBlocked() const { return blocked; }
 };

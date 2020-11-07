@@ -5,17 +5,17 @@ int main()
 	srand(time(NULL));
 
 
-	MazeGame game(21, 21, 4);
+	MazeGame game(9, 9, 4);
 	game.GenerteMaze();
 	game.GeneratePlayers();
 	game.Print();
 
-	/*while (1)
-	{
+	while (!game.Round())
+	{	
 		system("CLS");
-		game.Round();
 		game.Print();
+	}
 
-	}*/
+	std::cout << "Game Over!!" << std::endl;
 
 }

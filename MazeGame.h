@@ -17,12 +17,13 @@ public:
 	MazeGame(): player(nullptr) {}
 	MazeGame(int _height, int _width, int _extiNumber): player(nullptr), Maze(_height, _width, _extiNumber) {}
 	~MazeGame();
-	void Round();
+	int Round();
+	
 	void GenerteMaze() override;
 	int SetExitNumber(int _exitNumber) override;
 	void GeneratePlayers();
 	
-
-
-
+	inline int GetPlayerSteps(int playerID) const { return player[playerID].GetStepNumber(); }
+	inline int GetPlayerRounds(int playerID) const { return player[playerID].GetRoundNumber(); }
+	inline int GetPlayerWaitings(int playerID) const { return player[playerID].GetRoundNumber()-player[playerID].GetStepNumber(); }
 };

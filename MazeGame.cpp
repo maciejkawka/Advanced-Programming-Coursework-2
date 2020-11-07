@@ -16,14 +16,17 @@ void MazeGame::MovePlayer(int playerID)
 	if (nextPathIndex == path->size())
 	{
 		player[playerID].Disactivate();
+		player[playerID].SetPosition(Center);
 		return;
 	}
 	if (path->at(nextPathIndex).x == Exit[playerID + 1].x && path->at(nextPathIndex).y == Exit[playerID + 1].y)
 	{
 		player[playerID].Disactivate();
+		player[playerID].SetPosition(Center);
 		return;
 	}
-		
+
+	player[playerID].NextRound();
 	if (CheckCollision(nextPathIndex))
 		player[playerID].Wait();
 	else
@@ -45,11 +48,29 @@ MazeGame::~MazeGame()
 	delete[] player;
 }
 
-void MazeGame::Round()
+int MazeGame::Round()
 {
-	MovePlayer(0);
-	MovePlayer(1);
+	int GameOver=0;
+	for (int i = 0; i < exitNumber; i++)
+	{
+		if (player[i].IsBlocked())
+		{
+			GameOver++;
+			continue;
+		}
+		if (!player[i].GetState())
+		{
+			GameOver++;
+			continue;
+		}
+		MovePlayer(i);
+	}
+
+	if (GameOver == 4)
+		return -1;
+	return 0;	
 }
+
 
 void MazeGame::GenerteMaze()
 {
@@ -83,7 +104,7 @@ void MazeGame::GenerteMaze()
 
 	RecursiveMazeGenerator({ 1,1 });
 	PlaceExits();
-	CenterSquereGenerator();
+	//CenterSquereGenerator();
 
 	maze[width * (height / 2) + (width / 2)] = 'S';
 
@@ -96,8 +117,7 @@ void MazeGame::GenerteMaze()
 			maze[((path->at(i).y) * width) + path->at(i).x] = ' ';
 	}
 
-	for (int i = 0; i < path->size(); i++)
-		maze[((path->at(i).y) * width) + path->at(i).x] = 'o';
+
 	PlaceExits();
 	maze[width * (height / 2) + (width / 2)] = 'F';
 }
