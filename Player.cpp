@@ -31,6 +31,7 @@ void Player::MoveTo(int x, int y)
 	stepCounter++;
 	waitNumber = 0;
 
+
 }
 
 void Player::MoveTo(Point _position)

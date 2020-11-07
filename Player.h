@@ -12,7 +12,7 @@ class Player {
 private:
 
 	Point position;
-	int stepCounter, waitNumber;
+	int stepCounter, waitNumber, roundCounter;
 	bool isActivate;
 
 public:
@@ -25,7 +25,8 @@ public:
 	void Disactivate() { isActivate = false; }
 	void MoveTo(int x, int y);
 	void MoveTo(Point _position);
-
+	
+	inline void NextRound() { roundCounter++; }
 	inline void Wait() { waitNumber++; }
 	inline Point GetPosition() const { return position; }
 	inline int GetStepNumber() const { return stepCounter; }

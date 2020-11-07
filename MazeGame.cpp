@@ -14,7 +14,6 @@ void MazeGame::MovePlayer(int playerID)
 	int nextPathIndex = nextPoint + 2 + stepWalked;
 	
 	if (nextPathIndex == path->size())
-
 	{
 		player[playerID].Disactivate();
 		return;
@@ -50,6 +49,7 @@ MazeGame::~MazeGame()
 
 void MazeGame::Round()
 {
+
 	MovePlayer(0);
 	MovePlayer(1);
 }
