@@ -22,7 +22,6 @@ public:
 
 	void SetPosition(int x, int y);
 	void SetPosition(Point _position);
-	inline void Disactivate() { isActivate = false; }
 	void MoveTo(int x, int y);
 	void MoveTo(Point _position);
 	void Wait();
@@ -33,4 +32,5 @@ public:
 	inline bool GetState() const { return isActivate; }
 	inline int GetRoundNumber() const { return roundCounter; }
 	inline bool IsBlocked() const { return blocked; }
+	inline void Disactivate() { isActivate = false; }
 };

@@ -13,6 +13,7 @@ public:
 
 	UI();
 	~UI();
+
 	void SetDimentions();
 	void SetExitsNumber();
 	void GenerateMaze();
