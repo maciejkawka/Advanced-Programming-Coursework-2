@@ -10,12 +10,12 @@ int main()
 	game.GeneratePlayers();
 	game.Print();
 
-	while (1)
+	/*while (1)
 	{
 		system("CLS");
 		game.Round();
 		game.Print();
 
-	}
+	}*/
 
 }

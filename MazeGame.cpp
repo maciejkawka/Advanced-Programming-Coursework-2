@@ -4,14 +4,14 @@
 
 void MazeGame::MovePlayer(int playerID)
 {
-	int nextPoint = 0;
 	maze[player[playerID].GetPosition().y * width + player[playerID].GetPosition().x] = ' ';
-
-	while (path->at(nextPoint).x != Exit[playerID].x || path->at(nextPoint).y != Exit[playerID].y)
-		nextPoint++;
+	
+	int exitPosition = 0;
+	while (path->at(exitPosition).x != Exit[playerID].x || path->at(exitPosition).y != Exit[playerID].y)
+		exitPosition++;
 
 	int stepWalked = player[playerID].GetStepNumber();
-	int nextPathIndex = nextPoint + 2 + stepWalked;
+	int nextPathIndex = exitPosition + 2 + stepWalked;
 	
 	if (nextPathIndex == path->size())
 	{
@@ -23,18 +23,16 @@ void MazeGame::MovePlayer(int playerID)
 		player[playerID].Disactivate();
 		return;
 	}
-	
-	if (IsAnyPlayerAt(nextPathIndex))
+		
+	if (CheckCollision(nextPathIndex))
 		player[playerID].Wait();
 	else
 		player[playerID].MoveTo(path->at(nextPathIndex));
 	
-
-
 	maze[player[playerID].GetPosition().y * width + player[playerID].GetPosition().x] = 'P';
 }
 
-bool MazeGame::IsAnyPlayerAt(int positionIndex)
+bool MazeGame::CheckCollision(int positionIndex)
 {
 	for (int j = 0; j < exitNumber; j++)
 		if (player[j].GetPosition().x == path->at(positionIndex).x && player[j].GetPosition().y == path->at(positionIndex).y&&player[j].GetState())
@@ -49,7 +47,6 @@ MazeGame::~MazeGame()
 
 void MazeGame::Round()
 {
-
 	MovePlayer(0);
 	MovePlayer(1);
 }
@@ -71,12 +68,11 @@ void MazeGame::GenerteMaze()
 		std::cout << "Nither height nor width can be even" << std::endl;
 		return;
 	}
-	if (exitNumber == 0 || exitNumber > 4)
+	if (exitNumber < 2 || exitNumber > 4)
 	{
 		std::cout << "Exit number must be higher than 0 and smaller than 8!" << std::endl;
 		return;
 	}
-
 
 	maze = new char[height * width];
 	for (int i = 0; i < height * width; i++)
@@ -99,6 +95,7 @@ void MazeGame::GenerteMaze()
 		for (int i = 0; i < path->size(); i++)
 			maze[((path->at(i).y) * width) + path->at(i).x] = ' ';
 	}
+
 	for (int i = 0; i < path->size(); i++)
 		maze[((path->at(i).y) * width) + path->at(i).x] = 'o';
 	PlaceExits();

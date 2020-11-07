@@ -52,7 +52,7 @@ public:
 	int SetHeight(int _height);
 	int SetWidth(int _width);
 	virtual int SetExitNumber(int _exitNumber);
-	void Reset();
+	virtual void Reset();
 	void Print() const;
 
 	virtual void LoadMaze(std::string filePath);
