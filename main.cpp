@@ -13,7 +13,7 @@ int main()
 		std::cin >> input;
 		switch (input)
 		{
-		case 9:
+		case 0:
 			exit(0);
 		case 1:
 			main.SetDimentions();
@@ -39,6 +39,10 @@ int main()
 			break;
 		case 8:
 			main.NextRound();
+			break;
+
+		case 9:
+			main.SeriesOfMazes();
 			break;
 
 		default:

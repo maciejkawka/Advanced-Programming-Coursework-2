@@ -13,7 +13,8 @@ void UI::Welcome()
 	std::cout << "6. Reset Maze" << std::endl;
 	std::cout << "7. Analyse Random Mazes" << std::endl;
 	std::cout << "8. Next Round" << std::endl;
-	std::cout << "9. Exit" << std::endl;
+	std::cout << "9. Series of Mazes" << std::endl;
+	std::cout << "0. Exit" << std::endl;
 
 }
 
@@ -85,6 +86,40 @@ void UI::NextRound()
 	int state = mainMaze->Round();
 	if (state == -1)
 	{	
+		std::cout << "GAME OVER!" << std::endl;
+		std::cout << "A maze is not solvable due to all players blocking each other" << std::endl;
+		system("pause");
+	}
+	else if (state == -2)
+	{
+		std::cout << "GAME OVER!" << std::endl;
+		std::cout << "A maze is fully solvable as all players can reach the finishing point" << std::endl;
+		system("pause");
+	}
+	else if (state == -3)
+	{
+		std::cout << "GAME OVER!" << std::endl;
+		std::cout << "A maze is partially solvable as some players can reach the finishing point" << std::endl;
+		system("pause");
+	}
+	else if (state == -4)
+	{
+		std::cout << "Maze is not generated properly!!" << std::endl;
+		system("pause");
+	}
+}
+
+void UI::SeriesOfMazes()
+{
+	int state;
+	do{
+		state = mainMaze->Round();
+		mainMaze->Print();
+		std::cout << std::endl;
+	}while (!state);
+
+	if (state == -1)
+	{
 		std::cout << "GAME OVER!" << std::endl;
 		std::cout << "A maze is not solvable due to all players blocking each other" << std::endl;
 		system("pause");

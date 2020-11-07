@@ -23,4 +23,5 @@ public:
 	void Print();
 	void Analyse();
 	void NextRound();
+	void SeriesOfMazes();
 };
