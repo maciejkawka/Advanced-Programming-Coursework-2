@@ -27,15 +27,26 @@ void UI::Print()
 
 void UI::Analyse()
 {
-	
+	mainMaze->Reset();
 	system("CLS");
 
-	std::cout << "Enter maximum height: ";
-	int inputHeight = InputInt();
-	std::cout << "Enter maximum width: ";
-	int inputWidth = InputInt();
-	std::cout << "Enter maximum players: ";
-	int inputPlayers = InputInt();
+	std::cout << "Enter maximum height smaller than 52 and bigger than 8: ";
+	int inputHeight;
+	do {
+		inputHeight = InputInt();
+	} while (inputHeight > 51 || inputHeight < 9);
+
+	std::cout << "Enter maximum width smaller than 52 and bigger than 8: ";
+	int inputWidth;
+	do {
+		inputWidth = InputInt();
+	} while (inputWidth > 51 || inputWidth < 9);
+
+	std::cout << "Enter maximum players smaller than 5 and bigger than 1: ";
+	int inputPlayers;
+	do {
+		inputPlayers = InputInt();
+	} while (inputPlayers > 5 || inputPlayers < 2);
 	std::cout << std::endl;
 
 	for (int i = 9; i <= inputHeight; i += 2)

@@ -148,13 +148,17 @@ int MazeGame::SetExitNumber(int _exitNumber)
 
 void MazeGame::Reset()
 {
+
 	Maze::Reset();
+	if (player == nullptr)
+		return;
 	delete[] player;
 }
 
 void MazeGame::GeneratePlayers()
 {
-	player = new Player[exitNumber];
+	if(player==nullptr)
+		player = new Player[exitNumber];
 	
 	for (int i = 0; i < exitNumber; i++)
 	{

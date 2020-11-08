@@ -283,7 +283,7 @@ int Maze::SetWidth(int _width)
 	if (maze != nullptr)
 	{
 		std::cout << "Maze has been already generated" << std::endl;
-		return -1;
+		return 0;
 	}
 	if (_width > 51)
 	{
