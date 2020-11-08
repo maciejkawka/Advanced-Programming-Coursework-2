@@ -20,7 +20,6 @@ void UI::Welcome()
 
 void UI::Print()
 {
-
 	std::cout << "MAZE:" << std::endl << std::endl;
 	mainMaze->Print();
 }

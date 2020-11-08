@@ -148,7 +148,6 @@ int MazeGame::SetExitNumber(int _exitNumber)
 
 void MazeGame::Reset()
 {
-
 	Maze::Reset();
 	if (player == nullptr)
 		return;
@@ -183,5 +182,4 @@ void MazeGame::GeneratePlayers()
 		}
 		maze[player[i].GetPosition().y * width + player[i].GetPosition().x]= 'P';
 	}
-	
 }

@@ -370,9 +370,9 @@ void Maze::LoadMaze(std::string filePath)
 				return;
 			}
 		}
-		//Ask which one is better
+		
 		height = inputMaze.size() / width;
-		//GetHeight(inputMaze.size() / width);
+		
 		Center.y = height / 2;
 		Center.x = width / 2;
 		maze = new char[height * width];

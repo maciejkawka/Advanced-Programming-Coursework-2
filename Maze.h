@@ -54,6 +54,4 @@ public:
 	virtual void LoadMaze(std::string filePath);
 	virtual void SaveMaze(std::string filePath) const;
 
-
-
 };
