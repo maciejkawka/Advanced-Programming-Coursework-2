@@ -20,7 +20,7 @@ public:
 	int Round();
 	void GenerteMaze() override;
 	int SetExitNumber(int _exitNumber) override;
-	void Reset() override;
+	void Reset() override;  //NOT USED 
 	void GeneratePlayers();
 	
 	inline int GetPlayerSteps(int playerID) const { return player[playerID].GetStepNumber(); }

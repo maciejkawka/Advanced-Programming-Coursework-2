@@ -311,7 +311,7 @@ int Maze::SetExitNumber(int _exitNumber)
 	return 0;
 }
 
-void Maze::Reset()
+void Maze::Reset()  // NOT USED
 {
 	if (maze == nullptr)
 		std::cout << "Maze is not generated!!" << std::endl;
@@ -321,6 +321,7 @@ void Maze::Reset()
 	delete[] Exit;
 	Exit = nullptr;
 	path->clear();
+	std::vector<Point>().swap(*path);
 	height = 0;
 	width = 0;
 	Center.x = 0;
@@ -347,7 +348,7 @@ void Maze::LoadMaze(std::string filePath)
 {
 	if (maze != nullptr|| height != 0 || width != 0)
 	{
-		std::cout << "Maze has been already generated" << std::endl;
+		std::cout << "Maze has been already generated. Reset Maze." << std::endl;
 		return;
 	}
 
@@ -361,9 +362,9 @@ void Maze::LoadMaze(std::string filePath)
 		
 		while (std::getline(file, buffor))
 		{
-			width++;
+			height++;
 			inputMaze += buffor;
-			if (inputMaze.size() / width != buffor.size())
+			if (inputMaze.size() / height != buffor.size())
 			{
 				std::cout << "This is not a maze!! File:" << filePath << std::endl;
 				file.close();
@@ -371,7 +372,7 @@ void Maze::LoadMaze(std::string filePath)
 			}
 		}
 		
-		height = inputMaze.size() / width;
+		width = inputMaze.size() / height;
 		
 		Center.y = height / 2;
 		Center.x = width / 2;

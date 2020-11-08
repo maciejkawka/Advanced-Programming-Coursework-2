@@ -211,7 +211,8 @@ void UI::GenerateMaze()
 void UI::Reset()
 {
 	system("CLS");
-	mainMaze->Reset();
+	delete mainMaze;
+	mainMaze = new MazeGame();
 	system("pause");
 }
 

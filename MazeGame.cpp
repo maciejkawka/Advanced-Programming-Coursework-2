@@ -146,7 +146,7 @@ int MazeGame::SetExitNumber(int _exitNumber)
 	return 0;
 }
 
-void MazeGame::Reset()
+void MazeGame::Reset()  //NOT USED 
 {
 	Maze::Reset();
 	if (player == nullptr)
