@@ -27,8 +27,8 @@ void UI::Print()
 
 void UI::Analyse()
 {
-	return;
-	/*system("CLS");
+	
+	system("CLS");
 
 	std::cout << "Enter maximum height: ";
 	int inputHeight = InputInt();
@@ -36,13 +36,53 @@ void UI::Analyse()
 	int inputWidth = InputInt();
 	std::cout << "Enter maximum players: ";
 	int inputPlayers = InputInt();
+	std::cout << std::endl;
 
-	struct Data {
-		int steps;
-		int waits;
-	};*/
+	for (int i = 9; i <= inputHeight; i += 2)
+	{
+		for (int j = 9; j <= inputWidth; j += 2)
+		{
+			for (int k = 2; k <= inputPlayers; k++)
+			{
+				int solved = 0, notSolved = 0, partSolved = 0;
+				
+				for (int l = 0; l < 100; l++)
+				{
+					
+					mainMaze->SetHeight(i);
+					mainMaze->SetWidth(j);
+					mainMaze->SetExitNumber(k);
+					mainMaze->GenerteMaze();
+					mainMaze->GeneratePlayers();
+					
+					int state;
+					do {
+						state = mainMaze->Round();
+						if (state == -1)
+							notSolved++;
+						else if (state == -2)
+							solved++;
+						else if (state == -3)
+							partSolved++;
 
-	//TO BE IMPLEMENTED
+					} while (!state);
+
+					mainMaze->Reset();
+				}
+
+			std::cout << "Generated 100 mazes." << std::endl
+				<< "Width: " << j << std::endl
+				<< "Height: " << i << std::endl
+				<< "Players: " << k << std::endl
+				<< "Number of solved mazes: " << solved << std::endl
+				<< "Number of part solved mazes: " << partSolved << std::endl
+				<< "Number of not solved mazes: " << notSolved << std::endl << std::endl;
+
+			}
+		}
+	}
+
+	system("pause");
 }
 
 void UI::NextRound()
