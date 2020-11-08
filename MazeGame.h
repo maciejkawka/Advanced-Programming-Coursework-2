@@ -12,7 +12,6 @@ private:
 	void MovePlayer(int playerID);
 	bool CheckCollision(int positionIndex);
 
-
 public:
 	MazeGame(): player(nullptr) {}
 	MazeGame(int _height, int _width, int _extiNumber): player(nullptr), Maze(_height, _width, _extiNumber) {}

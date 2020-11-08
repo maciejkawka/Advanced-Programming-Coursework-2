@@ -153,6 +153,7 @@ void MazeGame::Reset()
 	if (player == nullptr)
 		return;
 	delete[] player;
+	player = nullptr;
 }
 
 void MazeGame::GeneratePlayers()
